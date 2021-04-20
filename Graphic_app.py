@@ -2,7 +2,7 @@ import tkinter as tk
 from setup import *
 
 def check_save(window,click_number_str):#It checks fields correctly populated in menu and return True or False
-    #initializa variables
+    #initialize variables
     global check_clicks
     global click_number
     global check
