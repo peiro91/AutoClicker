@@ -40,7 +40,7 @@ def initialize_setup(): #user is asked to set a position he wants to perform cli
     Y_label.config(text="Y position: "+str(Y_pos))
     window.deiconify() #de-minimize window
     
-def Menu_Graphic():
+def Menu_Graphic(master_menu):
 
     #define global variables
     global X_pos
@@ -55,7 +55,7 @@ def Menu_Graphic():
     global window
 
     #define window properties
-    window=tk.Tk()
+    window=tk.Toplevel(master_menu)
     window.geometry("600x100")
     window.title("autoGUI")
     window.configure(background="white")
@@ -66,16 +66,17 @@ def Menu_Graphic():
     check_clicks=""
     check=False
     click_number_str="0"
+    click_number=0
     color_check="red"
 
     #define window components
     #Button Ok
-    ok_button=tk.Button(text="OK",state=DISABLED, command= lambda: check_save(window,click_number_str.get()))
+    ok_button=tk.Button(window,text="OK",state=DISABLED, command= lambda: check_save(window,click_number_str.get()))
     ok_button.grid(row=0,column=0)
     ok_button.config(height = 1, width = 10)
     
     #Button Set
-    set_button=tk.Button(text="Click Set", command=initialize_setup)
+    set_button=tk.Button(window,text="Click Set", command=initialize_setup)
     set_button.grid(row=0,column=1)
     set_button.config(height = 1, width = 10)
     
@@ -84,7 +85,7 @@ def Menu_Graphic():
     text_check_click.grid(row=1,column=2)
     
     #User enters number of click he wants to perfom
-    click_number_str = tk.Entry(background="grey")
+    click_number_str = tk.Entry(window,background="grey")
     click_number_str.grid(row=1,column=1)
     
     #Label 
@@ -98,7 +99,6 @@ def Menu_Graphic():
     #Y label
     Y_label = tk.Label(window,background="white",text="Y position: ")
     Y_label.grid(row=2,column=1)
-  
-    tk.mainloop() #avvio del menu
-
+    master_menu.mainloop() #avvio del menu
     return check,click_number
+
