@@ -6,7 +6,8 @@ import tkinter as tk
 def autoclick():
     auto_click_button.configure(state=tk.DISABLED)
     launch_autoclicker(menu)
-    menu.quit()
+    auto_click_button.configure(state="normal")
+   # menu.quit()
 
 def Menu():
     global menu
