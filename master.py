@@ -9,9 +9,15 @@ def autoclick():
     auto_click_button.configure(state="normal")
    # menu.quit()
 
+def multiclick():
+    multi_click_button.configure(state=tk.DISABLED)
+    launch_multiclicker(menu)
+    multi_click_button.configure(state="normal")
+
 def Menu():
     global menu
     global auto_click_button
+    global multi_click_button
 
 #define window properties
     menu=tk.Tk()
@@ -23,6 +29,12 @@ def Menu():
     auto_click_button=tk.Button(text="One Spot\n Clicker", command=autoclick)
     auto_click_button.grid(row=0,column=0)
     auto_click_button.config(height = 5, width = 10)
+
+#Button Set autoclicker launch multiclicks
+    multi_click_button=tk.Button(text="Multi\n Clicker", command=multiclick)
+    multi_click_button.grid(row=0,column=1)
+    multi_click_button.config(height = 5, width = 10)
+
     tk.mainloop()
 def enablebutton():
     #here I need to re-activate button but I don't know how to do.
